@@ -1,15 +1,12 @@
 var express = require('express');
+var calendarController = require('./controllers/calendarController');
 
 var app = express();
 
 app.set('view engine', 'ejs');
 
-app.use('/css', express.static('css'));
-app.use('/js', express.static('js'));
-app.use('/img', express.static('img'));
+app.use(express.static('./assets'));
 
-app.get('/', function(req, res) {
-    res.render('calendar');
-});
+calendarController(app);
 
 app.listen(3000);
